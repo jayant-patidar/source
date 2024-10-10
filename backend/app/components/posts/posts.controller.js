@@ -30,6 +30,46 @@ class PostController {
       next(error);
     }
   }
+
+  // Get posts by seeker ID
+  async getPostsBySeekerId(request, response, next) {
+    try {
+      const seekerId = request.body.seekerId; // Get seeker ID from the request body
+      const posts = await this.postService.getPostsBySeekerId(seekerId);
+      if (posts.length) {
+        response.status(200).json(posts);
+      } else {
+        response
+          .status(404)
+          .json({ error: "No posts found for this seeker ID." });
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Get posts and User by seeker ID
+  async getPostsAndUserBySeekerId(request, response, next) {
+    try {
+      const seekerId = request.body.seekerId;
+      const postsWithUser = await this.postService.getPostsAndUserBySeekerId(
+        seekerId
+      );
+      response.status(200).json(postsWithUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Get all posts with seeker data
+  async getAllPostsWithSeeker(request, response, next) {
+    try {
+      const postsWithSeeker = await this.postService.getAllPostsWithSeeker();
+      response.status(200).json(postsWithSeeker);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new PostController();

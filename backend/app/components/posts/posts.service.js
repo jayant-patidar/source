@@ -2,9 +2,13 @@
 
 const PostDAL = require("./posts.dal");
 
+const UserDAL = require("../users/users.dal");
+
 class PostService {
   constructor() {
     this.postsDAL = new PostDAL();
+
+    this.userDAL = new UserDAL();
   }
 
   async getAllPosts() {
@@ -23,6 +27,44 @@ class PostService {
     try {
       const newPost = await this.postsDAL.createPost(postData);
       return newPost;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Get posts by seeker ID
+  async getPostsBySeekerId(seekerId) {
+    try {
+      const posts = await this.postsDAL.getPostsBySeekerId(seekerId);
+      return posts;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Get posts and User by seeker ID
+  async getPostsAndUserBySeekerId(seekerId) {
+    try {
+      const postsByUser = await this.postsDAL.getPostsBySeekerId(seekerId);
+      const user = await this.userDAL.getUserById(seekerId);
+
+      const postsWithUser = {
+        posts: postsByUser,
+        user: user,
+      };
+
+      return postsWithUser;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Get all posts seeker data
+  async getAllPostsWithSeeker() {
+    try {
+      const postsWithSeeker = await this.postsDAL.getAllPostsWithSeeker();
+
+      return postsWithSeeker;
     } catch (error) {
       throw error;
     }

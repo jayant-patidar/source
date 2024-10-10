@@ -28,6 +28,7 @@ const Post = new Schema(
       default: "open",
       enum: ["open", "accepted", "completed", "canceled"],
     }, // Task statuses
+    type: { type: String, required: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
     tags: { type: [String], required: false }, // Optional tags array
