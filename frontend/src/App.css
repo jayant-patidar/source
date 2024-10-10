@@ -46,7 +46,7 @@ body {
   background-color: #ffffff; /* White search bar */
   border-radius: 4px;
   padding: 3px; /* Adjust padding for better aesthetics */
-  min-width: 400px; /* Set a minimum width for the search bar */
+  min-width: 200px; /* Set a minimum width for the search bar */
   flex-grow: 1; /* Allow search bar to grow */
 }
 

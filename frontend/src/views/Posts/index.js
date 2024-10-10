@@ -7,6 +7,8 @@ import {
   IconButton,
   CircularProgress,
   Avatar,
+  Grid, // Import Grid component for layout
+  useMediaQuery, // Optional: Helps to make decisions based on screen size
 } from "@mui/material";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import CommentIcon from "@mui/icons-material/Comment";
@@ -14,10 +16,10 @@ import SendIcon from "@mui/icons-material/Send";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import axios from "axios";
 import "../../../src/App.css"; // Import the updated global CSS
-import UserProfileBox from "../UserProfileBox"; // Import UserProfile component
-import RecommendedJobsBox from "../RecommendedJobsBox"; // Import RecommendedJobs component
-import RecentJobsBox from "../RecentJobBox"; // Import RecentJobs component
-import JobPostForm from "../PostJobBox"; // Import JobPostForm component
+import UserProfileBox from "../UserProfileBox";
+import RecommendedJobsBox from "../RecommendedJobsBox";
+import RecentJobsBox from "../RecentJobBox";
+import JobPostForm from "../PostJobBox";
 import profileImage from "../../assets/images/profileImage.png";
 
 const Posts = () => {
@@ -43,108 +45,112 @@ const Posts = () => {
     fetchPosts();
   }, []);
 
+  // Optional: For handling conditional rendering based on screen size
+  const isMobile = useMediaQuery("(max-width:600px)");
+
   if (loading) {
     return <CircularProgress color="primary" />;
   }
 
   return (
     <div className="posts-page-layout">
-      {/* Left Sidebar: User Profile */}
-      <div className="sidebar-left">
-        <UserProfileBox />
-      </div>
+      <Grid container spacing={2}>
+        {/* Left Sidebar: User Profile */}
+        <Grid item xs={12} sm={4} md={3}>
+          <UserProfileBox />
+        </Grid>
 
-      {/* Main Content: Posts */}
-      <div className="posts-container">
-        <JobPostForm /> {/* Add JobPostForm here */}
-        {posts.map((post, index) => (
-          <Card key={index} className="post-card">
-            <CardContent>
-              {/* Profile image on top left */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "10px",
-                }}
-              >
-                <Avatar alt={post.seekerId.name} src={profileImage} />{" "}
-                {/* Update profileImageUrl to the correct field */}
-                <div style={{ marginLeft: "10px" }}>
-                  <Typography variant="body1" color="black">
-                    {post.seekerId.name}
-                  </Typography>
-                  <Typography variant="body2" color="gray">
-                    {new Date(post.createdAt).toLocaleString()}{" "}
-                    {/* Format date here */}
-                  </Typography>
+        {/* Main Content: Posts */}
+        <Grid item xs={12} sm={8} md={6}>
+          <JobPostForm /> {/* Add JobPostForm here */}
+          {posts.map((post, index) => (
+            <Card key={index} className="post-card">
+              <CardContent>
+                {/* Profile image on top left */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Avatar alt={post.seekerId.name} src={profileImage} />{" "}
+                  {/* Update profileImageUrl to the correct field */}
+                  <div style={{ marginLeft: "10px" }}>
+                    <Typography variant="body1" color="black">
+                      {post.seekerId.name}
+                    </Typography>
+                    <Typography variant="body2" color="gray">
+                      {new Date(post.createdAt).toLocaleString()}
+                    </Typography>
+                  </div>
                 </div>
-              </div>
-              {/* Horizontal line */}
-              <hr className="post-divider" />
+                {/* Horizontal line */}
+                <hr className="post-divider" />
 
-              <Typography variant="h5" gutterBottom color="black">
-                {post.title}
-              </Typography>
-              <Typography variant="body1" color="gray" gutterBottom>
-                {post.description}
-              </Typography>
-              <Typography variant="body2" color="gray">
-                Location: {post.location || "N/A"}
-              </Typography>
-              <Typography variant="body2" color="gray">
-                Pay: ${post.pay || "N/A"}
-              </Typography>
-              <Typography variant="body2" color="gray">
-                Type: {post.type || "N/A"}
-              </Typography>
-              <div style={{ marginTop: "10px" }}>
-                {post.tags &&
-                  post.tags.map((tag, i) => (
-                    <Button
-                      key={i}
-                      variant="outlined"
-                      size="small"
-                      className="btn"
-                      color="default"
-                    >
-                      {tag}
-                    </Button>
-                  ))}
-              </div>
+                <Typography variant="h5" gutterBottom color="black">
+                  {post.title}
+                </Typography>
+                <Typography variant="body1" color="gray" gutterBottom>
+                  {post.description}
+                </Typography>
+                <Typography variant="body2" color="gray">
+                  Location: {post.location || "N/A"}
+                </Typography>
+                <Typography variant="body2" color="gray">
+                  Pay: ${post.pay || "N/A"}
+                </Typography>
+                <Typography variant="body2" color="gray">
+                  Type: {post.type || "N/A"}
+                </Typography>
+                <div style={{ marginTop: "10px" }}>
+                  {post.tags &&
+                    post.tags.map((tag, i) => (
+                      <Button
+                        key={i}
+                        variant="outlined"
+                        size="small"
+                        className="btn"
+                        color="default"
+                      >
+                        {tag}
+                      </Button>
+                    ))}
+                </div>
 
-              {/* Horizontal Line */}
-              <hr className="post-divider" />
+                {/* Horizontal Line */}
+                <hr className="post-divider" />
 
-              {/* Action Buttons Section */}
-              <div className="post-actions">
-                <IconButton className="icon-btn">
-                  <ThumbUpOffAltIcon style={{ color: "#000" }} />
-                </IconButton>
-                <IconButton className="icon-btn">
-                  <CommentIcon style={{ color: "#000" }} />
-                </IconButton>
-                <IconButton className="icon-btn">
-                  <SendIcon style={{ color: "#000" }} />
-                </IconButton>
-                <IconButton className="icon-btn">
-                  <BookmarkBorderIcon style={{ color: "#000" }} />
-                </IconButton>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                {/* Action Buttons Section */}
+                <div className="post-actions">
+                  <IconButton className="icon-btn">
+                    <ThumbUpOffAltIcon style={{ color: "#000" }} />
+                  </IconButton>
+                  <IconButton className="icon-btn">
+                    <CommentIcon style={{ color: "#000" }} />
+                  </IconButton>
+                  <IconButton className="icon-btn">
+                    <SendIcon style={{ color: "#000" }} />
+                  </IconButton>
+                  <IconButton className="icon-btn">
+                    <BookmarkBorderIcon style={{ color: "#000" }} />
+                  </IconButton>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
 
-      {/* Right Sidebar: Recommended and Recent Jobs */}
-      <div className="sidebar-right">
-        <div className="sidebar-right-box">
-          <RecommendedJobsBox />
-        </div>
-        <div className="sidebar-right-box">
-          <RecentJobsBox />
-        </div>
-      </div>
+        {/* Right Sidebar: Recommended and Recent Jobs */}
+        <Grid item xs={12} sm={12} md={3}>
+          <div className="sidebar-right-box">
+            <RecommendedJobsBox />
+          </div>
+          <div className="sidebar-right-box">
+            <RecentJobsBox />
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
