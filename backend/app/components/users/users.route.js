@@ -12,6 +12,6 @@ router.post("/createUser", userController.createUser.bind(userController));
 router.get("/getAllUsers", userController.getAllUsers.bind(userController));
 
 // Get user by ID
-router.get("/getUser/:id", userController.getUserById.bind(userController));
+router.post("/getUserById", userController.getUserById.bind(userController));
 
 module.exports = router;

@@ -31,7 +31,7 @@ class UserController {
 
   async getUserById(req, res, next) {
     try {
-      const user = await this.userService.getUserById(req.params.id);
+      const user = await this.userService.getUserById(req.body.seekerId);
       if (user) {
         res.status(200).json(user);
       } else {
