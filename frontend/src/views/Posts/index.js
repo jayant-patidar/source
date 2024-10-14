@@ -7,15 +7,15 @@ import {
   IconButton,
   CircularProgress,
   Avatar,
-  Grid, // Import Grid component for layout
-  useMediaQuery, // Optional: Helps to make decisions based on screen size
+  useMediaQuery,
 } from "@mui/material";
+import Grid from "@mui/material/Grid2"; // Import Grid2 component
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import CommentIcon from "@mui/icons-material/Comment";
 import SendIcon from "@mui/icons-material/Send";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import axios from "axios";
-import "../../../src/App.css"; // Import the updated global CSS
+import "../../../src/App.css";
 import UserProfileBox from "../UserProfileBox";
 import RecommendedJobsBox from "../RecommendedJobsBox";
 import RecentJobsBox from "../RecentJobBox";
@@ -56,13 +56,13 @@ const Posts = () => {
     <div className="posts-page-layout">
       <Grid container spacing={2}>
         {/* Left Sidebar: User Profile */}
-        <Grid item xs={12} sm={4} md={3}>
+        <Grid size={{ xs: 12, sm: 4, md: 3 }}>
           <UserProfileBox />
         </Grid>
 
         {/* Main Content: Posts */}
-        <Grid item xs={12} sm={8} md={6}>
-          <JobPostForm /> {/* Add JobPostForm here */}
+        <Grid size={{ xs: 12, sm: 8, md: 6 }}>
+          <JobPostForm />
           {posts.map((post, index) => (
             <Card key={index} className="post-card">
               <CardContent>
@@ -74,8 +74,7 @@ const Posts = () => {
                     marginBottom: "10px",
                   }}
                 >
-                  <Avatar alt={post.seekerId.name} src={profileImage} />{" "}
-                  {/* Update profileImageUrl to the correct field */}
+                  <Avatar alt={post.seekerId.name} src={profileImage} />
                   <div style={{ marginLeft: "10px" }}>
                     <Typography variant="body1" color="black">
                       {post.seekerId.name}
@@ -142,7 +141,7 @@ const Posts = () => {
         </Grid>
 
         {/* Right Sidebar: Recommended and Recent Jobs */}
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid size={{ xs: 12, sm: 12, md: 3 }}>
           <div className="sidebar-right-box">
             <RecommendedJobsBox />
           </div>
