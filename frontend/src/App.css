@@ -170,7 +170,7 @@ body {
 /* Post Divider */
 .post-divider {
   border: none;
-  border-top: 1px solid #000; /* Black line for black-and-white theme */
+  border-top: 2px solid #000; /* Black line for black-and-white theme */
   margin-top: 10px;
 }
 
@@ -207,6 +207,7 @@ body {
 }
 
 .profile-divider,
+.postcard-section-divider,
 .job-divider {
   border: none;
   border-top: 1px solid #ccc;

@@ -34,7 +34,7 @@ class PostController {
   // Get posts by seeker ID
   async getPostsBySeekerId(request, response, next) {
     try {
-      const seekerId = request.body.seekerId; // Get seeker ID from the request body
+      const seekerId = request.body.seekerId;
       const posts = await this.postService.getPostsBySeekerId(seekerId);
       if (posts.length) {
         response.status(200).json(posts);

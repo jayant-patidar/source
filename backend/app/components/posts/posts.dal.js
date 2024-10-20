@@ -11,20 +11,18 @@ class PostDAL {
 
   // Create a new post
   async createPost(postData) {
-    const newPost = new Post(postData); // Creating a new Post document
-    return await newPost.save(); // Save the new post in the database
+    const newPost = new Post(postData);
+    return await newPost.save();
   }
 
   // Get posts by seeker ID
   async getPostsBySeekerId(seekerId) {
-    return await Post.find({ seekerId }); // Assuming seekerId is of type ObjectId
+    return await Post.find({ seekerId });
   }
 
   // Get all posts with seeker data
   async getAllPostsWithSeeker() {
-    return await Post.find({})
-      .populate("seekerId", "-password") // Adjust fields as needed
-      .exec();
+    return await Post.find({}).populate("seekerId", "-password").exec();
   }
 }
 

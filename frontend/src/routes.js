@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion"; // Ensure framer-motion is imported
 
 import Posts from "./views/Posts/index.js";
+import Todo from "./views/Todo/index.js";
 
 const Router = () => {
   const SuspenseLoading = () => {
@@ -39,6 +40,7 @@ const Router = () => {
       <Routes>
         {/* Add more routes here */}
         <Route path="/" element={<Posts />} />
+        <Route path="/todo" element={<Todo />} />
       </Routes>
     </Suspense>
   );

@@ -52,10 +52,20 @@ const RecentJobsBox = () => {
             <Typography variant="body1" color="textPrimary">
               {job.title}
             </Typography>
+            <Typography variant="caption" color="gray">
+              {new Date(job.createdAt).toLocaleString("default", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              })}
+            </Typography>
             <Typography variant="body2" color="textSecondary">
               {job.description}
             </Typography>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="button" color="textSecondary">
               Pay: ${job.pay} : {job.type}
             </Typography>
             <hr className="job-divider" />

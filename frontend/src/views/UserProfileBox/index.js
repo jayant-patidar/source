@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Typography, Button, Avatar } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Avatar,
+  Link,
+} from "@mui/material";
 import axios from "axios";
 import profileImage from "../../assets/images/profileImage.png";
 import coverImage from "../../assets/images/coverImage.png";
@@ -65,6 +72,9 @@ const UserProfileBox = () => {
           >
             View Profile
           </Button>
+          <div>
+            <a href="/todo">TODO</a>
+          </div>
         </div>
       </CardContent>
     </Card>
