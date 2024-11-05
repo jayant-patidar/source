@@ -31,4 +31,9 @@ router
   .route("/getAllPostsWithSeeker")
   .get(postsController.getAllPostsWithSeeker.bind(postsController));
 
+// Get post and seekr by post ID
+router
+  .route("/getPostsWithSeekerByPostId")
+  .post(postsController.getPostsWithSeekerByPostId.bind(postsController));
+
 module.exports = router;

@@ -16,8 +16,31 @@ const Todo = () => {
         <li>user id validation</li>
         <li>negotiate the price</li>
         <li>
-          add fields to posts like general location, precise location,
-          negotiable?, job date and time,expiration date and time
+          post model
+          <ul>
+            <li>title</li>
+            <li>description</li>
+            <li>providerId</li>
+            <li>seekerId</li>
+            <li>jobDate</li>
+            <li>jobTime</li>
+            <li>pay</li>
+            <li>location</li>
+            <li>preRequisite</li>
+            <li>category</li>
+            <li>status</li>
+            <li>type</li>
+            <li>createdAt</li>
+            <li>updatedAt</li>
+            <li>tags</li>
+            <li></li>
+            <li>general location</li>
+            <li>precise location</li>
+            <li>negotiable?</li>
+            <li>job date and time</li>
+            <li>expiration date and time</li>
+            <li></li>
+          </ul>
         </li>
         <li>original pay and updated pay</li>
         <li>user profile sections</li>

@@ -1,0 +1,22 @@
+.box-link {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+.postjob-textfield {
+  cursor: pointer !important;
+}
+.job-post-box {
+  display: flex !important;
+  align-items: center !important;
+  padding: 10px !important;
+  margin-bottom: 10px !important;
+  cursor: pointer !important;
+}
+
+.avatar {
+  margin-right: 10px !important;
+}
+
+.MuiButton-root {
+  margin-left: 10px !important;
+}

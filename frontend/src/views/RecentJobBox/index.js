@@ -7,6 +7,7 @@ import {
   Link,
 } from "@mui/material";
 import axios from "axios";
+import "./index.css";
 
 const RecentJobsBox = () => {
   const [recentJobs, setRecentJobs] = useState([]);
@@ -40,7 +41,7 @@ const RecentJobsBox = () => {
   }
 
   return (
-    <Card className="recent-jobs-card">
+    <Card className="recent-jobs-box">
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Recent Jobs
@@ -65,14 +66,14 @@ const RecentJobsBox = () => {
             <Typography variant="body2" color="textSecondary">
               {job.description}
             </Typography>
-            <Typography variant="button" color="textSecondary">
+            <Typography variant="body2" color="textSecondary">
               Pay: ${job.pay} : {job.type}
             </Typography>
             <hr className="job-divider" />
           </div>
         ))}
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <Link href="/recent-jobs" variant="body2" color="primary">
+        <div className="view-all-jobs">
+          <Link href="/all-recent-jobs" variant="body2" color="primary">
             View All Recent Jobs
           </Link>
         </div>

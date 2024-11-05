@@ -24,6 +24,20 @@ class PostDAL {
   async getAllPostsWithSeeker() {
     return await Post.find({}).populate("seekerId", "-password").exec();
   }
+
+  // Get post with seeker data by postId
+  async getPostWithSeekerByPostId(postId) {
+    try {
+      // Populate the seeker field and exclude the password
+      const postWithSeeker = await Post.findById(postId)
+        .populate("seekerId", "-password")
+        .exec();
+
+      return postWithSeeker;
+    } catch (error) {
+      throw new Error("Error retrieving post with seeker data.");
+    }
+  }
 }
 
 module.exports = PostDAL;

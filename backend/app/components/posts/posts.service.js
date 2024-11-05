@@ -69,6 +69,17 @@ class PostService {
       throw error;
     }
   }
+
+  async getPostWithSeekerByPostId(postId) {
+    try {
+      const postWithSeekerByPodtId =
+        await this.postsDAL.getPostWithSeekerByPostId(postId);
+
+      return postWithSeekerByPodtId;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = PostService;

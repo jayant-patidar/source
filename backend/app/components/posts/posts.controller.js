@@ -70,6 +70,24 @@ class PostController {
       next(error);
     }
   }
+
+  // Get post with seeker data by postId
+  async getPostsWithSeekerByPostId(request, response, next) {
+    try {
+      const postId = request.body.postId;
+      const postWithSeeker = await this.postService.getPostWithSeekerByPostId(
+        postId
+      );
+
+      if (postWithSeeker) {
+        response.status(200).json(postWithSeeker);
+      } else {
+        response.status(404).json({ error: "Post not found." });
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new PostController();

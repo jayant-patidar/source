@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"; // Ensure framer-motion
 
 import Posts from "./views/Posts/index.js";
 import Todo from "./views/Todo/index.js";
-
+import FullJobDetails from "./views/FullJobDetails/index.js";
 const Router = () => {
   const SuspenseLoading = () => {
     const [show, setShow] = useState(false);
@@ -41,6 +41,7 @@ const Router = () => {
         {/* Add more routes here */}
         <Route path="/" element={<Posts />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/job/:_id" element={<FullJobDetails />} />
       </Routes>
     </Suspense>
   );

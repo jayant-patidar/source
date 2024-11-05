@@ -5,8 +5,10 @@ import {
   Typography,
   CircularProgress,
   Link,
+  Chip,
 } from "@mui/material";
 import axios from "axios";
+import "./index.css";
 
 const RecommendedJobsBox = () => {
   const [jobs, setJobs] = useState([]);
@@ -14,7 +16,7 @@ const RecommendedJobsBox = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("/posts/getAllPosts"); // Change this to your actual endpoint
+      const response = await axios.get("/posts/getAllPosts");
       if (Array.isArray(response.data)) {
         setJobs(response.data);
       } else {
@@ -36,7 +38,7 @@ const RecommendedJobsBox = () => {
   }
 
   return (
-    <Card className="recommended-jobs-card">
+    <Card className="recommended-jobs-box">
       <CardContent>
         <Typography variant="h6" gutterBottom>
           Recommended Jobs
@@ -45,21 +47,24 @@ const RecommendedJobsBox = () => {
         <hr className="job-divider" />
         {jobs.slice(0, 3).map((job, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
-            <Typography variant="body1" color="textPrimary">
-              {job.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
+            <div className="recommended-jobHeader">
+              <Typography variant="body1" className="job-title">
+                {job.title}
+              </Typography>{" "}
+              <Chip label={`${job.category}`} className="jobCategory" />
+            </div>
+            <Typography variant="body2" className="job-description">
               {job.description}
             </Typography>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="body2" className="job-pay-type">
               Pay: ${job.pay} : {job.type}
             </Typography>
             <hr className="job-divider" />
           </div>
         ))}
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <Link href="/all-jobs" variant="body2" color="primary">
-            View All Jobs
+        <div className="view-all-jobs">
+          <Link href="/all-recommended-jobs" variant="body2" color="primary">
+            View All Recommended Jobs
           </Link>
         </div>
       </CardContent>

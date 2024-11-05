@@ -1,0 +1,103 @@
+.navbar {
+  background-color: #000000 !important; /* Black navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Ensure full width */
+  padding: 0 20px; /* Add padding to the left and right */
+  box-shadow: none; /* Remove box shadow for a flat look */
+}
+
+/* Navbar Toolbar */
+.navbar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Full width */
+  align-items: center; /* Center items vertically */
+}
+
+/* Left side: Logo and Search Bar */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust gap between logo and search bar */
+}
+
+/* Logo Image */
+.navbar-logo-image {
+  margin-top: 10px;
+  margin-right: 20px;
+  height: 50px;
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Search Bar Styles */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff; /* White search bar */
+  border-radius: 4px;
+  padding: 3px; /* Adjust padding for better aesthetics */
+  min-width: 200px; /* Set a minimum width for the search bar */
+  flex-grow: 1; /* Allow search bar to grow */
+}
+
+/* Adjust the search icon margin */
+.search-icon {
+  margin-right: 5px;
+  margin-left: 10px;
+  width: 80px;
+}
+
+/* Search Input */
+.navbar-search-input {
+  width: 100%; /* Full width of the search bar */
+  color: #000000; /* Black text */
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
+}
+
+/* Right side: Navigation links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Navbar Links */
+.navbar-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  color: #ffffff; /* White text for navbar links */
+  text-transform: none; /* Remove uppercase transformation */
+}
+
+/* Adjust icon sizes */
+.navbar-link .MuiSvgIcon-root {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+/* Action Buttons Section */
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.action-buttons .MuiIconButton-root {
+  color: #000000; /* Black icons */
+}
+
+/* Icon Button Hover Effect */
+.icon-btn {
+  color: #000; /* Ensure the icons are black for the theme */
+  transition: color 0.3s ease;
+}
+
+.icon-btn:hover {
+  color: #fff; /* Change color to white on hover */
+  background-color: #000; /* Add a black background on hover for a contrast effect */
+}

@@ -13,6 +13,8 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Menu,
+  MenuItem,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -27,10 +29,11 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "../App.css"; // Import your CSS for styling
 import logo from "../assets/images/logo.png";
 import profileImage from "../assets/images/profileImage.png";
+import "./NavbarStyle.css";
 
 const Navbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -93,6 +96,9 @@ const Navbar = () => {
         </ListItem>
         <ListItem button>
           <ListItemText primary="Settings" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Profile" />
         </ListItem>
         <ListItem button>
           <ListItemText primary="Logout" />
@@ -171,6 +177,17 @@ const Navbar = () => {
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         {drawerList()}
       </Drawer>
+
+      {/* Dropdown Menu for User Avatar */}
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      </Menu>
     </>
   );
 };

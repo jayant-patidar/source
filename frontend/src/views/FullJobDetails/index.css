@@ -1,0 +1,130 @@
+.fullJobDetailsContainer {
+  padding: 20px !important;
+}
+
+.fullJobDetailsPaper {
+  padding: 25px !important;
+  background-color: #f9f9f9 !important;
+  margin: 20px !important;
+}
+
+.jobHeader {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 15px !important;
+}
+
+.jobTitle {
+  font-weight: bold !important;
+  color: #333 !important;
+  margin-right: 10px !important;
+}
+
+.jobTypePay {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.jobType {
+  background-color: #e0f7fa !important;
+  color: #00796b !important;
+  font-weight: bold !important;
+}
+
+.jobCategory {
+  margin-top: 5px !important;
+  background-color: #e8eaf6 !important;
+  color: #3949ab !important;
+  font-weight: bold !important;
+}
+
+.jobDescription {
+  color: #666 !important;
+  margin-top: 15px !important;
+}
+
+.jobDetailsSection {
+  margin-top: 15px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.jobDetail {
+  color: #333 !important;
+  font-size: 0.9em !important;
+}
+
+.jobLocation {
+  color: #888 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 25px !important;
+}
+
+.jobLocationIcon {
+  margin-right: 4px !important;
+  color: #3d52a0 !important;
+}
+
+.posterSection {
+  margin-top: 25px !important;
+}
+
+.posterDetails {
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 10px !important;
+}
+
+.posterName {
+  font-weight: bold !important;
+  color: #333 !important;
+}
+
+.posterRating {
+  color: #888 !important;
+}
+
+.posterSince {
+  color: #888 !important;
+  margin-top: 5px !important;
+}
+
+.jobPayContainer {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important; /* Space between pay and type */
+}
+
+.jobPay {
+  background-color: #000000 !important; /* Choose a catchy background color */
+  color: #fff !important; /* Change text color to white for contrast */
+  font-weight: bold !important;
+  padding: 8px 12px !important; /* Add some padding for better spacing */
+}
+
+.posterDetails {
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 10px !important;
+}
+
+.posterInfo {
+  margin-left: 10px !important; /* Space between avatar and text */
+}
+
+.posterName {
+  font-weight: bold !important;
+  color: #333 !important;
+  font-size: 1.1rem !important; /* Slightly larger font for name */
+}
+
+.posterRating,
+.posterSince {
+  color: #666 !important;
+  font-size: 0.9rem !important; /* Smaller font size for rating and since */
+  margin-top: 2px !important; /* Add some space above these elements */
+}

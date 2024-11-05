@@ -1,0 +1,59 @@
+/* Recent Jobs Box Styles */
+
+.recent-jobs-box {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+.job-divider {
+  border: none !important;
+  border-top: 1px solid #ccc !important;
+  margin: 10px 0 !important;
+}
+
+.MuiTypography-body1 {
+  font-weight: bold !important;
+  color: #000000 !important;
+  margin-bottom: 5px !important;
+}
+
+.MuiTypography-body2 {
+  color: #666666 !important;
+  margin-bottom: 5px !important;
+}
+
+.MuiTypography-button {
+  display: block !important;
+  color: #333333 !important;
+  font-weight: 500 !important;
+  margin-bottom: 5px !important;
+}
+
+.MuiTypography-caption {
+  color: #999999 !important;
+  display: block !important;
+  margin-bottom: 5px !important;
+}
+
+.recent-jobs-box a {
+  color: #3d52a0 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+.recent-jobs-box a:hover {
+  text-decoration: underline !important;
+  color: #000000 !important;
+}
+
+.view-all-jobs a {
+  color: #3d52a0 !important;
+  text-decoration: none !important;
+}
+
+.view-all-jobs a:hover {
+  text-decoration: underline !important;
+}

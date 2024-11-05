@@ -1,0 +1,69 @@
+/* Styles for the Posts component */
+.posts-page-layout {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 20px !important; /* Adjust gap between sidebars and main content */
+  padding: 20px !important;
+}
+
+.posts-container {
+  background-color: #e8e7e7 !important; /* Adjust background color as per theme */
+  width: 50% !important; /* Adjust width as needed */
+}
+
+.post-card-content {
+  padding-bottom: 10px !important;
+}
+
+/* Individual Post Card */
+.post-card {
+  background-color: #ffffff !important; /* White background for the card */
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important; /* Rounded corners */
+}
+
+.postcard-section-divider {
+  border: none !important;
+  border-top: 1px solid #ccc !important;
+  margin: 5px 0 !important;
+}
+
+/* Post Actions */
+.post-actions {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+/* Action Buttons Section */
+.action-buttons {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+.jobPayContainer {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.jobPay {
+  background-color: #000000 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+  padding: 8px 12px !important;
+}
+.icon-btn {
+  color: #000 !important;
+  transition: color 0.3s ease !important;
+}
+
+.icon-btn:hover {
+  color: #fff !important;
+  background-color: #d1d1d1 !important;
+}
+
+.tag-button:hover,
+.action-buttons .MuiIconButton-root:hover {
+  background-color: #1f1f1f !important;
+  color: white !important;
+}

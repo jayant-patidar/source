@@ -5,15 +5,18 @@ import {
   Typography,
   Button,
   Avatar,
+  CircularProgress,
   Link,
 } from "@mui/material";
 import axios from "axios";
 import profileImage from "../../assets/images/profileImage.png";
 import coverImage from "../../assets/images/coverImage.png";
+import "./index.css";
 
 const UserProfileBox = () => {
   const [user, setUser] = useState(null);
   const userId = "66a68718bc989c0a422db2d6";
+  const [loading, setLoading] = useState(true);
 
   const fetchUserData = async () => {
     try {
@@ -31,11 +34,7 @@ const UserProfileBox = () => {
   }, []);
 
   if (!user) {
-    return (
-      <Typography variant="body1" align="center">
-        Loading...
-      </Typography>
-    );
+    return <CircularProgress color="primary" />;
   }
 
   return (
@@ -48,7 +47,7 @@ const UserProfileBox = () => {
       </div>
       <CardContent>
         <div style={{ marginTop: "-50px" }}>
-          <Typography variant="h6" align="center">
+          <Typography variant="h4" align="center">
             {user.name}
           </Typography>
           <hr className="profile-divider" />
@@ -65,13 +64,18 @@ const UserProfileBox = () => {
           </Typography>
           <hr className="profile-divider" />
           <Button
-            variant="outlined"
+            variant="contained"
             color="primary"
             fullWidth
-            style={{ marginTop: "10px" }}
+            style={{
+              marginTop: "10px",
+              backgroundColor: "#000",
+              color: "#fff",
+            }}
           >
             View Profile
           </Button>
+
           <div>
             <a href="/todo">TODO</a>
           </div>
