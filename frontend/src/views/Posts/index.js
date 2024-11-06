@@ -169,7 +169,11 @@ const Posts = () => {
                       variant="h5"
                       gutterBottom
                       color="black"
-                      style={{ textAlign: "left", fontWeight: "bold" }}
+                      style={{
+                        textAlign: "left",
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
                     >
                       {post.title}
                     </Typography>

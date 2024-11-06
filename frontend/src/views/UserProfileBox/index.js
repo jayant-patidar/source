@@ -69,8 +69,8 @@ const UserProfileBox = () => {
             fullWidth
             style={{
               marginTop: "10px",
-              backgroundColor: "#000",
-              color: "#fff",
+              backgroundColor: "#e4e4e4",
+              color: "#000",
             }}
           >
             View Profile

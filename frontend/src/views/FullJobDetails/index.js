@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Typography, Avatar, Paper, Chip } from "@mui/material";
+import {
+  Typography,
+  Avatar,
+  Paper,
+  Link,
+  Chip,
+  IconButton,
+  Button,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LoopIcon from "@mui/icons-material/Loop";
+import SendIcon from "@mui/icons-material/Send";
+import ShareLocationIcon from "@mui/icons-material/ShareLocation";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import profileImage from "../../assets/images/profileImage.png";
 import "./index.css";
 
@@ -11,6 +24,7 @@ const FullJobDetails = () => {
   const { _id } = useParams();
   const [job, setJob] = useState(null);
   const [poster, setPoster] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchJobDetails = async () => {
@@ -36,6 +50,15 @@ const FullJobDetails = () => {
       <Grid container justifyContent="center">
         <Grid xs={12} sm={8} md={6}>
           <Paper elevation={3} className="fullJobDetailsPaper">
+            {/* Back Arrow Button */}
+            <IconButton
+              onClick={() => navigate(-1)}
+              style={{
+                color: "#000",
+              }}
+            >
+              <ArrowBackIcon />
+            </IconButton>
             <div className="jobHeader">
               <Typography variant="h4" className="jobTitle">
                 {job.title}
@@ -74,16 +97,84 @@ const FullJobDetails = () => {
               {job.location}
             </Typography>
 
+            {/* Action Buttons */}
+            <div
+              className="job-action-buttons"
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                marginTop: "20px",
+              }}
+            >
+              <IconButton
+                className="icon-btn"
+                style={{ flexDirection: "column" }}
+              >
+                <LoopIcon />
+                <Typography variant="caption">Negotiate</Typography>
+              </IconButton>
+              <IconButton
+                className="icon-btn"
+                style={{ flexDirection: "column" }}
+              >
+                <ShareLocationIcon />
+                <Typography variant="caption">Locate</Typography>
+              </IconButton>
+              <IconButton
+                className="icon-btn"
+                style={{ flexDirection: "column" }}
+              >
+                <SendIcon />
+                <Typography variant="caption">Share</Typography>
+              </IconButton>
+              <IconButton
+                className="icon-btn"
+                style={{ flexDirection: "column" }}
+              >
+                <BookmarkBorderIcon />
+                <Typography variant="caption">Save</Typography>
+              </IconButton>
+            </div>
+
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#000",
+                color: "#fff",
+                fontWeight: "bold",
+                alignSelf: "flex-end",
+                margin: "10px",
+              }}
+              fullWidth
+            >
+              Interested
+            </Button>
+
             <div className="posterSection">
               <Typography variant="h5" className="jobPosterTitle">
                 Job Poster:
               </Typography>
               <div className="posterDetails">
-                <Avatar src={profileImage} alt={poster.name} />
+                <Avatar
+                  className="job-poster-image"
+                  src={profileImage}
+                  alt={poster.name}
+                />
                 <div className="posterInfo">
-                  <Typography variant="body1" className="posterName">
-                    {poster.name}
-                  </Typography>
+                  <Link
+                    component="button"
+                    onClick={() => {
+                      navigate(`/user/`);
+                    }}
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                  >
+                    <Typography variant="body1" className="posterName">
+                      {poster.name}
+                    </Typography>
+                  </Link>
                   <Typography variant="caption" className="posterRating">
                     Seeker Rating: {poster.seekerRating || "N/A"} ★
                   </Typography>

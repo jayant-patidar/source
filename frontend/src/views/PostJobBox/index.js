@@ -39,7 +39,7 @@ const PostJobBox = () => {
             multiline
             rows={1}
             variant="outlined"
-            placeholder="Describe the job you want to post..."
+            placeholder="Source it..."
             style={{ marginRight: "10px" }}
           />
         </CardContent>

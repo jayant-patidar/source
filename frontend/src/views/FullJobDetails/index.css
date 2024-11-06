@@ -128,3 +128,19 @@
   font-size: 0.9rem !important; /* Smaller font size for rating and since */
   margin-top: 2px !important; /* Add some space above these elements */
 }
+
+.icon-btn {
+  color: #000 !important;
+  transition: color 0.3s ease !important;
+}
+
+.job-action-buttons {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+.job-poster-image {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  margin-right: 10px !important;
+}
