@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -12,16 +13,16 @@ import "./index.css";
 const RecentJobsBox = () => {
   const [recentJobs, setRecentJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   const fetchRecentJobs = async () => {
     try {
-      const response = await axios.get("/posts/getAllPosts"); // Change this to your actual endpoint for recent posts
+      const response = await axios.get("/posts/getAllPosts");
       if (Array.isArray(response.data)) {
         // Sort jobs based on createdAt field in descending order
         const sortedJobs = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
-        setRecentJobs(sortedJobs.slice(0, 4)); // Take the first 4 recent jobs
+        setRecentJobs(sortedJobs.slice(0, 4));
       } else {
         console.error("Error fetching recent jobs", response);
       }
@@ -50,9 +51,21 @@ const RecentJobsBox = () => {
         <hr className="job-divider" />
         {recentJobs.map((job, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
-            <Typography variant="body1" color="textPrimary">
-              {job.title}
-            </Typography>
+            <Link
+              component="button"
+              onClick={() => {
+                navigate(`/job/${job._id}`);
+              }}
+              style={{
+                textDecoration: "underline",
+                color: "black",
+                textAlign: "left",
+              }}
+            >
+              <Typography variant="body1" color="textPrimary">
+                {job.title}
+              </Typography>
+            </Link>
             <Typography variant="caption" color="gray">
               {new Date(job.createdAt).toLocaleString("default", {
                 day: "numeric",
@@ -67,7 +80,7 @@ const RecentJobsBox = () => {
               {job.description}
             </Typography>
             <Typography variant="body2" color="textSecondary">
-              Pay: ${job.pay} : {job.type}
+              Pay: ${job.updatedPay?.[0]?.pay || job.originalPay} : {job.type}
             </Typography>
             <hr className="job-divider" />
           </div>

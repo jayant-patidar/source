@@ -14,4 +14,10 @@ router.get("/getAllUsers", userController.getAllUsers.bind(userController));
 // Get user by ID
 router.post("/getUserById", userController.getUserById.bind(userController));
 
+// Route
+router.post(
+  "/getUserByIdWithoutPassword",
+  userController.getUserByIdWithoutPassword.bind(userController)
+);
+
 module.exports = router;

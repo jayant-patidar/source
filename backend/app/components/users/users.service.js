@@ -33,6 +33,16 @@ class UserService {
       throw error;
     }
   }
+
+  // Service
+  async getUserByIdWithoutPassword(userId) {
+    try {
+      const user = await this.userDAL.getUserByIdWithoutPassword(userId);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = UserService;

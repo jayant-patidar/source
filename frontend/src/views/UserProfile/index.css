@@ -1,0 +1,41 @@
+.userProfilePaper {
+  padding: 20px !important;
+  margin: 20px !important;
+  text-align: center !important;
+}
+
+.userProfileHeader {
+  display: flex !important;
+  align-items: left !important;
+  justify-content: center !important;
+  gap: 20px;
+}
+
+.userProfileImage {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 20px;
+}
+
+.ratingChip {
+  background-color: #e0f7fa !important;
+  color: #00796b !important;
+  font-weight: bold !important;
+}
+.profileAvatar {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.userInfo {
+  text-align: left !important;
+}
+
+.ratingChip {
+  margin-top: 5px !important;
+  margin-right: 5px !important;
+}
+.aboutSection {
+  margin: 20px;
+}

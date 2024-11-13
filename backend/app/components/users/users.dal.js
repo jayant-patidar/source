@@ -15,6 +15,11 @@ class UserDAL {
   async getUserById(userId) {
     return await User.findById(userId);
   }
+
+  // DAL
+  async getUserByIdWithoutPassword(userId) {
+    return await User.findById(userId).select("-password");
+  }
 }
 
 module.exports = UserDAL;

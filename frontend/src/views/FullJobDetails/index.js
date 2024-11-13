@@ -64,7 +64,10 @@ const FullJobDetails = () => {
                 {job.title}
               </Typography>
               <div className="jobPayContainer">
-                <Chip label={`Pay: $${job.pay}`} className="jobPay" />
+                <Chip
+                  label={`Pay: $${job.updatedPay?.[0]?.pay || job.originalPay}`}
+                  className="jobPay"
+                />
                 <Chip label={job.type} color="primary" className="jobType" />
               </div>
             </div>
@@ -94,7 +97,9 @@ const FullJobDetails = () => {
 
             <Typography variant="body2" className="jobLocation">
               <LocationOnIcon fontSize="small" className="jobLocationIcon" />
-              {job.location}
+              {job.visibility
+                ? job.location.exact
+                : job.location.general || "N/A"}
             </Typography>
 
             {/* Action Buttons */}
@@ -164,10 +169,10 @@ const FullJobDetails = () => {
                   <Link
                     component="button"
                     onClick={() => {
-                      navigate(`/user/`);
+                      navigate(`/user/${job.seekerId._id}`);
                     }}
                     style={{
-                      textDecoration: "none",
+                      textDecoration: "underline",
                       color: "black",
                     }}
                   >

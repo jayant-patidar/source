@@ -13,11 +13,13 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Menu,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid2";
-
+import { MoreVert } from "@mui/icons-material";
 import LoopIcon from "@mui/icons-material/Loop";
+import EventNoteIcon from "@mui/icons-material/EventNote";
 import SendIcon from "@mui/icons-material/Send";
 import ShareLocationIcon from "@mui/icons-material/ShareLocation";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
@@ -34,6 +36,8 @@ import "./index.css";
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null); // Anchor element for the menu
+  const [selectedPostId, setSelectedPostId] = useState(null); // Track the selected post for the menu
   const navigate = useNavigate();
 
   const fetchPosts = async () => {
@@ -54,6 +58,16 @@ const Posts = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  const handleMenuOpen = (event, postId) => {
+    setAnchorEl(event.currentTarget);
+    setSelectedPostId(postId);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    setSelectedPostId(null);
+  };
 
   if (loading) {
     return <CircularProgress color="primary" />;
@@ -78,6 +92,7 @@ const Posts = () => {
               margin: "10px 0",
             }}
           >
+            {" "}
             <FormControl
               variant="outlined"
               size="small"
@@ -108,21 +123,31 @@ const Posts = () => {
           {posts.map((post, index) => (
             <Card key={index} className="post-card">
               <CardContent className="post-card-content">
-                {/* Profile image on top left */}
+                {/* Profile Image and Header */}
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: "10px",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <Avatar alt={post.seekerId.name} src={profileImage} />
                     <div style={{ marginLeft: "10px" }}>
-                      <Typography variant="body1" color="black">
-                        {post.seekerId.name}
-                      </Typography>
+                      <Link
+                        component="button"
+                        onClick={() => {
+                          navigate(`/user/${post.seekerId._id}`);
+                        }}
+                        style={{
+                          textDecoration: "underline",
+                          color: "black",
+                        }}
+                      >
+                        <Typography variant="body1" color="black">
+                          {post.seekerId.name}
+                        </Typography>
+                      </Link>
                       <Typography variant="caption" color="gray">
                         Posted:{" "}
                         {new Date(post.createdAt).toLocaleString("default", {
@@ -137,16 +162,37 @@ const Posts = () => {
                     </div>
                   </div>
 
-                  {/* Seeker Rating */}
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    Seeker Rating: {post.seekerId.seekerRating || "N/A"} ★
-                  </Typography>
+                  {/* Seeker Rating and Meatballs Menu */}
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      style={{
+                        fontWeight: "bold",
+                        marginRight: "8px",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Seeker Rating: {post.seekerId.seekerRating || "N/A"} ★
+                    </Typography>
+                    <IconButton
+                      onClick={(event) => handleMenuOpen(event, post._id)}
+                    >
+                      <MoreVert />
+                    </IconButton>
+                    <Menu
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl && selectedPostId === post._id)}
+                      onClose={handleMenuClose}
+                    >
+                      <MenuItem onClick={handleMenuClose}>Copy Link</MenuItem>
+                      <MenuItem onClick={handleMenuClose}>Report Post</MenuItem>
+                      <MenuItem onClick={handleMenuClose}>
+                        Not Interested
+                      </MenuItem>
+                    </Menu>
+                  </div>
                 </div>
-
                 {/* Horizontal line */}
                 <hr className="postcard-section-divider" />
 
@@ -179,7 +225,12 @@ const Posts = () => {
                     </Typography>
                   </Link>
                   <div className="jobPayContainer">
-                    <Chip label={`Pay: $${post.pay}`} className="jobPay" />
+                    <Chip
+                      label={`Pay: $${
+                        post.updatedPay?.[0]?.pay || post.originalPay
+                      }`}
+                      className="jobPay"
+                    />
                     <Chip
                       label={post.type}
                       color="primary"
@@ -192,6 +243,26 @@ const Posts = () => {
                   {post.description}
                 </Typography>
 
+                {/* Job Type and Date */}
+                <Typography
+                  variant="body2"
+                  style={{
+                    color: "gray",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <EventNoteIcon
+                    fontSize="small"
+                    style={{ marginRight: "4px" }}
+                  />{" "}
+                  {new Date(post.jobDate).toLocaleDateString("default", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}{" "}
+                  at {post.jobTime}
+                </Typography>
                 {/* Location with pin icon */}
                 <Typography
                   variant="body2"
@@ -205,7 +276,9 @@ const Posts = () => {
                     fontSize="small"
                     style={{ marginRight: "4px" }}
                   />
-                  {post.location || "N/A"}
+                  {post.visibility
+                    ? post.location.exact
+                    : post.location.general || "N/A"}
                 </Typography>
                 {/* Horizontal Line */}
                 <hr className="postcard-section-divider" />

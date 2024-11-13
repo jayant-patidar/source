@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import "./index.css";
 const RecommendedJobsBox = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchJobs = async () => {
     try {
@@ -48,16 +50,28 @@ const RecommendedJobsBox = () => {
         {jobs.slice(0, 3).map((job, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
             <div className="recommended-jobHeader">
-              <Typography variant="body1" className="job-title">
-                {job.title}
-              </Typography>{" "}
+              <Link
+                component="button"
+                onClick={() => {
+                  navigate(`/job/${job._id}`);
+                }}
+                style={{
+                  textDecoration: "underline",
+                  color: "black",
+                  textAlign: "left",
+                }}
+              >
+                <Typography variant="body1" className="job-title">
+                  {job.title}
+                </Typography>
+              </Link>{" "}
               <Chip label={`${job.category}`} className="jobCategory" />
             </div>
             <Typography variant="body2" className="job-description">
               {job.description}
             </Typography>
             <Typography variant="body2" className="job-pay-type">
-              Pay: ${job.pay} : {job.type}
+              Pay: ${job.updatedPay?.[0]?.pay || job.originalPay} : {job.type}
             </Typography>
             <hr className="job-divider" />
           </div>
