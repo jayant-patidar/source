@@ -7,6 +7,7 @@ import {
   Avatar,
   CircularProgress,
   Link,
+  Divider,
 } from "@mui/material";
 import axios from "axios";
 import profileImage from "../../assets/images/profileImage.png";
@@ -50,19 +51,19 @@ const UserProfileBox = () => {
           <Typography variant="h4" align="center">
             {user.name}
           </Typography>
-          <hr className="profile-divider" />
+          <Divider sx={{ my: 2 }} className="profile-divider" />
           <Typography variant="h6" align="center">
             {user.email}
           </Typography>
-          <hr className="profile-divider" />
+          <Divider sx={{ my: 2 }} className="profile-divider" />
           <Typography variant="body1" align="center">
             Seeker Rating: {user.seekerRating}/5{" "}
           </Typography>
-          <hr className="profile-divider" />
+          <Divider sx={{ my: 2 }} className="profile-divider" />
           <Typography variant="body1" align="center">
             Provider Rating: {user.providerRating}/5{" "}
           </Typography>
-          <hr className="profile-divider" />
+          <Divider sx={{ my: 2 }} className="profile-divider" />
           <Button
             variant="contained"
             color="primary"

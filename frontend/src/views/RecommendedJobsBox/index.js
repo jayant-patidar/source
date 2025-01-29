@@ -7,6 +7,7 @@ import {
   CircularProgress,
   Link,
   Chip,
+  Divider,
 } from "@mui/material";
 import axios from "axios";
 import "./index.css";
@@ -46,7 +47,7 @@ const RecommendedJobsBox = () => {
           Recommended Jobs
         </Typography>
 
-        <hr className="job-divider" />
+        <Divider sx={{ my: 2 }} className="job-divider" />
         {jobs.slice(0, 3).map((job, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
             <div className="recommended-jobHeader">
@@ -73,7 +74,7 @@ const RecommendedJobsBox = () => {
             <Typography variant="body2" className="job-pay-type">
               Pay: ${job.updatedPay?.[0]?.pay || job.originalPay} : {job.type}
             </Typography>
-            <hr className="job-divider" />
+            <Divider sx={{ my: 2 }} className="job-divider" />
           </div>
         ))}
         <div className="view-all-jobs">

@@ -91,7 +91,7 @@ const FullJobDetails = () => {
                 Time: {job.jobTime}
               </Typography>
               <Typography variant="body2" className="jobDetail">
-                Prerequisite: {job.preRequisite}
+                Prerequisite: {job.preRequisite || "None"}
               </Typography>
             </div>
 

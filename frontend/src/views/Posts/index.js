@@ -8,10 +8,11 @@ import {
   Chip,
   CircularProgress,
   Avatar,
-  Button, // Import Button component
+  Button,
   FormControl,
   InputLabel,
   Select,
+  Divider,
   MenuItem,
   Menu,
 } from "@mui/material";
@@ -194,50 +195,65 @@ const Posts = () => {
                   </div>
                 </div>
                 {/* Horizontal line */}
-                <hr className="postcard-section-divider" />
+                <Divider sx={{ my: 2 }} className="postcard-section-divider" />
 
                 {/* Title and Pay on the same line */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Link
-                    component="button"
-                    onClick={() => {
-                      navigate(`/job/${post._id}`);
-                    }}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <Typography
-                      variant="h5"
-                      gutterBottom
-                      color="black"
-                      style={{
-                        textAlign: "left",
-                        fontWeight: "bold",
-                        textDecoration: "underline",
+                <Grid container spacing={0}>
+                  <Grid item size={{ xs: 12, md: 7, lg: 7 }}>
+                    <Link
+                      component="button"
+                      onClick={() => {
+                        navigate(`/job/${post._id}`);
                       }}
+                      style={{ textDecoration: "none", color: "black" }}
                     >
-                      {post.title}
-                    </Typography>
-                  </Link>
-                  <div className="jobPayContainer">
+                      <Typography
+                        variant="h5"
+                        gutterBottom
+                        color="black"
+                        style={{
+                          textAlign: "left",
+                          fontWeight: "bold",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        {post.title}
+                      </Typography>
+                    </Link>
+                  </Grid>
+                  <Grid
+                    item
+                    size={{ xs: 4, md: 3, lg: 3 }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
+                  >
                     <Chip
                       label={`Pay: $${
                         post.updatedPay?.[0]?.pay || post.originalPay
                       }`}
                       className="jobPay"
                     />
+                  </Grid>
+                  <Grid
+                    item
+                    size={{ xs: 8, md: 2, lg: 2 }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
+                  >
                     <Chip
                       label={post.type}
                       color="primary"
                       className="jobType"
                     />
-                  </div>
-                </div>
+                  </Grid>
+                </Grid>
+
                 {/* Description */}
                 <Typography variant="h6" gutterBottom>
                   {post.description}
@@ -281,7 +297,7 @@ const Posts = () => {
                     : post.location.general || "N/A"}
                 </Typography>
                 {/* Horizontal Line */}
-                <hr className="postcard-section-divider" />
+                <Divider sx={{ my: 2 }} className="postcard-section-divider" />
 
                 {/* Action Buttons Section */}
                 <div

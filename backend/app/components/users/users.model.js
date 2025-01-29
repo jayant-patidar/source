@@ -13,6 +13,7 @@ const User = new Schema(
     address: { type: String, required: true },
     seekerRating: { type: Number, default: 0, min: 0, max: 5 }, // Rating out of 5
     providerRating: { type: Number, default: 0, min: 0, max: 5 }, // Rating out of 5
+    about: { type: String, required: false },
     createdAt: { type: Date, default: Date.now },
   },
   { timestamps: true } // Automatically adds createdAt and updatedAt

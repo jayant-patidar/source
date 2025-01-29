@@ -6,6 +6,7 @@ import {
   Typography,
   CircularProgress,
   Link,
+  Divider,
 } from "@mui/material";
 import axios from "axios";
 import "./index.css";
@@ -48,7 +49,8 @@ const RecentJobsBox = () => {
           Recent Jobs
         </Typography>
 
-        <hr className="job-divider" />
+        {/* <hr className="job-divider" /> */}
+        <Divider sx={{ my: 2 }} className="job-divider" />
         {recentJobs.map((job, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
             <Link
@@ -82,7 +84,8 @@ const RecentJobsBox = () => {
             <Typography variant="body2" color="textSecondary">
               Pay: ${job.updatedPay?.[0]?.pay || job.originalPay} : {job.type}
             </Typography>
-            <hr className="job-divider" />
+            {/* <hr className="job-divider" /> */}
+            <Divider sx={{ my: 2 }} className="job-divider" />
           </div>
         ))}
         <div className="view-all-jobs">

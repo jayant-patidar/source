@@ -64,8 +64,9 @@ const UserProfile = () => {
             />
           </div>
           <div className="aboutSection">
-            <Typography variant="body1" className="userDescription">
-              About: {user.about || "No bio available"}
+            About:
+            <Typography variant="body2" className="userDescription">
+              {user.about || "No bio available"}
             </Typography>
           </div>
         </Paper>

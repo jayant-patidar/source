@@ -2,6 +2,9 @@
   padding: 20px !important;
   margin: 20px !important;
   text-align: center !important;
+  min-width: 300px !important; /* Minimum width for narrow displays */
+  max-width: 500px !important; /* Restricting maximum width to keep layout balanced */
+  word-wrap: break-word !important;
 }
 
 .userProfileHeader {
@@ -38,4 +41,9 @@
 }
 .aboutSection {
   margin: 20px;
+}
+.aboutSection {
+  margin: 20px !important;
+  text-align: left !important;
+  word-wrap: break-word !important;
 }
